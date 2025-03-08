@@ -11,6 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.runBlocking
+import no.uio.ifi.in2000.darellfn.catnip.data.facts.FactsDataSource
+import no.uio.ifi.in2000.darellfn.catnip.ui.facts.FactsScreen
 import no.uio.ifi.in2000.darellfn.catnip.ui.theme.CatnipTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,8 +26,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CatnipTheme {
-
+                App()
             }
+        }
+    }
+}
+
+@Composable
+fun App() {
+   val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "facts_screen") {
+        composable("facts_screen") {
+            FactsScreen(viewModel = viewModel(), navController = navController)
         }
     }
 }
