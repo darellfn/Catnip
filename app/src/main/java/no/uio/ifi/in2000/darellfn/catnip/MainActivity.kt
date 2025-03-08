@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.runBlocking
 import no.uio.ifi.in2000.darellfn.catnip.data.facts.FactsDataSource
 import no.uio.ifi.in2000.darellfn.catnip.ui.facts.FactsScreen
+import no.uio.ifi.in2000.darellfn.catnip.ui.home.HomeScreen
 import no.uio.ifi.in2000.darellfn.catnip.ui.theme.CatnipTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +36,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "facts_screen") {
+    NavHost(navController = navController, startDestination = "home_screen") {
+        composable("home_screen") {
+            HomeScreen(viewModel = viewModel(), navController = navController)
+        }
         composable("facts_screen") {
             FactsScreen(viewModel = viewModel(), navController = navController)
         }

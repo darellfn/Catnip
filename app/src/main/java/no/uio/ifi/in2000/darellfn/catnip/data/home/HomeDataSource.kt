@@ -17,7 +17,7 @@ class HomeDataSource {
         }
     }
 
-    fun getData() {
+    private val screens = mapOf("Cat Facts" to "cat_facts")
 
-    }
+    fun getData() : Map<String, String> = screens
 }
