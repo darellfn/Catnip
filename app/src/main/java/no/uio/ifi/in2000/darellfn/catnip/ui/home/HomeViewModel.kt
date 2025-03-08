@@ -1,4 +1,6 @@
 package no.uio.ifi.in2000.darellfn.catnip.ui.home
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeViewModel : ViewModel() {
 }
